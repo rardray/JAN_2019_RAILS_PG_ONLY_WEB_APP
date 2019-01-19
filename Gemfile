@@ -32,7 +32,7 @@ group :test do
   gem 'guard-minitest',           '2.4.4'
 end
 
-group :development do 
+group :production do 
   gem 'pg'
 end
 
