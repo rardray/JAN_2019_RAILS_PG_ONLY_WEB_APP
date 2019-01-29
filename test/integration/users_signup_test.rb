@@ -13,6 +13,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     assert_select 'div.alert'
     assert_select 'div.alert-danger'
+    assert_select 'form[action="/signup"]'
   end
 end
 #this test checks that user count remains the same when invalid data posted as well verifies that sends to proper view
