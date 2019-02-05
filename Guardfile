@@ -15,11 +15,11 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-guard :minitest, spring: "bin/rails test", all_on_start: false do
+guard :minitest, spring: 'bin/rails test', all_on_start: false do
   # with Minitest::Unit
   watch(%r{^test/(.*)\/?test_(.*)\.rb$})
-  watch(%r{^test/test_helper\.rb$})      { 'test' }
-  watch('config/routes.rb')    { integration_tests }
+  watch(%r{^test/test_helper\.rb$}) { 'test' }
+  watch('config/routes.rb') { integration_tests }
   watch(%r{^app/models/(.*?)\.rb$}) do |matches|
     "test/models/#{matches[1]}_test.rb"
   end
@@ -28,7 +28,7 @@ guard :minitest, spring: "bin/rails test", all_on_start: false do
   end
   watch(%r{^app/views/([^/]*?)/.*\.html\.erb$}) do |matches|
     ["test/controllers/#{matches[1]}_controller_test.rb"] +
-    integration_tests(matches[1])
+      integration_tests(matches[1])
   end
   watch('app/views/layouts/application.html.erb') do
     'test/integration/site_layout_test.rb'
@@ -45,7 +45,7 @@ guard :minitest, spring: "bin/rails test", all_on_start: false do
   end
   watch(%r{app/views/users/*}) do
     resource_tests('users') +
-    ['test/integration/microposts_interface_test.rb']
+      ['test/integration/microposts_interface_test.rb']
   end
 
   # with Minitest::Spec
@@ -71,7 +71,7 @@ end
 # Returns the integration tests corresponding to the given resource.
 def integration_tests(resource = :all)
   if resource == :all
-    Dir["test/integration/*"]
+    Dir['test/integration/*']
   else
     Dir["test/integration/#{resource}_*.rb"]
   end
