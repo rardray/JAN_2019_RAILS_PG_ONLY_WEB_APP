@@ -29,6 +29,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert_template 'layouts/_flash_message'
+    assert is_logged_in?
   end
 end
 #this test checks that user count remains the same when invalid data posted as well verifies that sends to proper view
