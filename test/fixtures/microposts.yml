@@ -24,3 +24,12 @@ micropost_<%= n %>:
   created_at: <%= 42.days.ago %>
   user: test
 <% end %>
+
+a:
+  content: 'who cares'
+  created_at: <%= 3.years.ago %>
+  user: test_two
+
+b:
+  content: "who else cares"
+  created_at: <%= 3.years.ago %>
