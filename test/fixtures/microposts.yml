@@ -2,7 +2,7 @@
 
 one:
   content: "first"
-  created_at: <%= 3.years.ago %>
+  created_at: <%= 4.years.ago %>
   user: test
 
 two:
