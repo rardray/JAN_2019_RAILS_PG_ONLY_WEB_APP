@@ -18,7 +18,7 @@ gem 'will_paginate', '>= 3.1.6'
 gem 'bootstrap-will_paginate', '>= 1.0.0'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
-gem 'fog'
+
 
 group :development, :test do
   gem 'sqlite3'
@@ -43,6 +43,7 @@ end
 group :production do 
   gem 'pg'
   gem 'fog-aws'
+  gem 'fog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
