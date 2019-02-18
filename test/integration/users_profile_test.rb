@@ -17,5 +17,11 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     @user.microposts.paginate(page: 1).each do |m|
       assert_match m.content, response.body
     end
+    log_in_as @user
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_select 'section.stats'
+    assert_select 'div.stats'
+    assert_select 'a[href=?]', following_user_path(@user), count: 1
   end
 end
