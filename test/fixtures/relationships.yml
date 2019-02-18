@@ -1,0 +1,15 @@
+one:
+  follower: test
+  followed: test_two
+
+two:
+  follower: test_two
+  followed: lana
+
+three:
+  follower: lana
+  followed: test
+
+four:
+  follower: malory
+  followed: test
