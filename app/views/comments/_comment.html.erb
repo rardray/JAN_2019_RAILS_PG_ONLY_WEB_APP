@@ -1,8 +1,9 @@
 <li id="comment-<%= comment.id %>" style="background-color: rgb(240, 240, 250)" %>>
-	<%= link_to gravatar_for(comment.user, size: 30), comment.user %>
+	<%= link_to gravatar_for(comment.user, size: 50), comment.user %>
 	<span class="user"><%= link_to comment.user.name, comment.user %></span>
 	<span class="content">
 		<%= comment.content %>
+		<%= image_tag comment.picture.url if comment.picture? %>
 	</span>
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(comment.created_at) %> ago.
@@ -17,6 +18,8 @@
 	    var user = val.querySelector('.user')
 	      var content = val.querySelector('.content')
 	        var timeStamp = val.querySelector('.timestamp')
+	          var image = val.querySelector('img')
+	            var image2 = content.querySelector('img')
 	    if (window.location.pathname === '/') {
 	      return val.style.padding = '3px',
 	          user.style.fontSize = '8pt',
@@ -25,7 +28,10 @@
 	              val.style.marginLeft = '20px',
 	          content.style.fontSize = '8pt',
 	            timeStamp.style.fontSize = '7pt',
-	              timeStamp.style.textAlign = 'right'
+	              timeStamp.style.textAlign = 'right',
+	                image.style.height = '30px',
+	                image.style.width = 'auto',
+	                  image2.style.height = '150px'
 	    }
 	  }
 	    changeStyle(li)
