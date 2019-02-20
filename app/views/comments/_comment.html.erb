@@ -15,23 +15,23 @@
 <script>
 	var li = document.querySelector('#comment-' + <%= comment.id %>)
 	function changeStyle(val) {
-	    var user = val.querySelector('.user')
-	      var content = val.querySelector('.content')
-	        var timeStamp = val.querySelector('.timestamp')
-	          var image = val.querySelector('img')
-	            var image2 = content.querySelector('img')
-	    if (window.location.pathname === '/') {
-	      return val.style.padding = '3px',
-	          user.style.fontSize = '8pt',
-	            user.style.padding = '2px',
-	              content.style.padding = '0px',
-	              val.style.marginLeft = '20px',
-	          content.style.fontSize = '8pt',
-	            timeStamp.style.fontSize = '7pt',
-	              timeStamp.style.textAlign = 'right',
-	                image.style.height = '30px',
-	                image.style.width = 'auto',
-	                  image2.style.height = '150px'
+	  var user = val.querySelector('.user')
+	  var content = val.querySelector('.content')
+	  var timeStamp = val.querySelector('.timestamp')
+	  var image = val.querySelector('img')
+	  var image2 = content.querySelector('img')
+	  if (window.location.pathname === '/' || window.location.pathname.includes('users')) {
+	    return val.style.padding = '3px',
+	      user.style.fontSize = '8pt',
+	      user.style.padding = '2px',
+	      content.style.padding = '0px',
+	      val.style.marginLeft = '20px',
+	      content.style.fontSize = '8pt',
+	      timeStamp.style.fontSize = '7pt',
+	      timeStamp.style.textAlign = 'right',
+	      image.style.height = '30px',
+	      image.style.width = 'auto',
+	      image2.style.height = '150px'
 	    }
 	  }
 	    changeStyle(li)

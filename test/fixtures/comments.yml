@@ -1,0 +1,11 @@
+uno:
+  content: "hello"
+  created_at: <%= 4.years.ago %>
+  user: test
+  micropost: one
+
+dos:
+  content: "yo"
+  created_at: <%= Time.zone.now %>
+  user: test_two
+  micropost: two
