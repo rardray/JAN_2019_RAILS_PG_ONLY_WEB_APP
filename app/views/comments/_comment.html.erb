@@ -1,0 +1,32 @@
+<li id="comment-<%= comment.id %>" style="background-color: rgb(240, 240, 250)" %>>
+	<%= link_to gravatar_for(comment.user, size: 30), comment.user %>
+	<span class="user"><%= link_to comment.user.name, comment.user %></span>
+	<span class="content">
+		<%= comment.content %>
+	</span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(comment.created_at) %> ago.
+	</span>
+	<% if current_user?(comment.user) && !current_page?(root_url)%>
+		<%= link_to 'delete', comment, method: :delete, data: { confirm: 'Delete comment?' } %>
+	<% end %>
+</li>
+<script>
+	var li = document.querySelector('#comment-' + <%= comment.id %>)
+	function changeStyle(val) {
+	    var user = val.querySelector('.user')
+	      var content = val.querySelector('.content')
+	        var timeStamp = val.querySelector('.timestamp')
+	    if (window.location.pathname === '/') {
+	      return val.style.padding = '3px',
+	          user.style.fontSize = '8pt',
+	            user.style.padding = '2px',
+	              content.style.padding = '0px',
+	              val.style.marginLeft = '20px',
+	          content.style.fontSize = '8pt',
+	            timeStamp.style.fontSize = '7pt',
+	              timeStamp.style.textAlign = 'right'
+	    }
+	  }
+	    changeStyle(li)
+</script>

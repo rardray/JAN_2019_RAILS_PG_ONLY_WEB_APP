@@ -17,7 +17,8 @@
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(micropost.created_at) %> ago.
 	</span>
-	<% if current_page?(root_url) || current_page?(user_path) %>
+	<% if current_page?(root_url)|| current_page?(user_path) %>
+		<span><%= pluralize(micropost.comments.count, 'comment')%> | </span>
 		<%= link_to 'comment', micropost  %>
 	<% else %>
 		<a style="cursor: pointer" onclick="goBack()">back</a>
@@ -25,5 +26,8 @@
 	<% if current_user?(micropost.user) %>
 		<span> | </span>
 		<%= link_to 'delete', micropost, method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+	<% if micropost.comments.any? && !current_page?(micropost_path(micropost.id)) %>
+		<%= render micropost.comments.first, @comments %>
 	<% end %>
 </li>

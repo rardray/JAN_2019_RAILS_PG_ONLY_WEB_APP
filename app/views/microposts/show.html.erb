@@ -1,6 +1,14 @@
 <div>
 	<ol class="microposts">
 		<%= render @micropost %>
-		<input type="text" />
 	</ol>
+	<% if @comments.any? %>
+		<ol class="microposts">
+			<%= render @comments %>
+		</ol>
+		<%= will_paginate @comments  %>
+	<%end%>
+	<div class='comment_form'>
+		<%= render 'shared/comment_form'%>
+	</div>
 </div>
