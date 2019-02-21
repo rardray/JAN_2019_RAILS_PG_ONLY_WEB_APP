@@ -15,9 +15,16 @@
 	</body>
 </html>
 <script>
-	window.addEventListener('resize', function(){
+	function mobileSizing() {
+		var containers = document.querySelector('.container')
 		if ($(window).height() > $(window).width()) {
-			return document.querySelector('.container').style.margin = '0px'
+			return containers.style.margin = '0px', console.log(containers.style.margin)
+	
+		} else {
+			containers.style.marginLeft = '115px';
+			containers.style.marginRight = '115px';
 		}
-	})
+	}
+	window.addEventListener('resize', mobileSizing)
+	mobileSizing()
 </script>
