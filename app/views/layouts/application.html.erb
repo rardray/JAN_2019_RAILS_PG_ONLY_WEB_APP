@@ -21,11 +21,8 @@
 		if ($(window).height() > $(window).width()) {
 			return containers.forEach(function(e) {
 				e.style.margin = '0px'
-			}),
-				columns.forEach(function(e) {
-					e.style.width = '100%'
-				}),console.log(containers[0].style.margin)
-	
+				e.style.width = $(window).width()
+			})
 		} else {
 			return containers.forEach(function(e) {
 				e.style.marginLeft = 'auto',
