@@ -13,7 +13,7 @@
 	<% end %>
 </li>
 <script>
-	var li = document.querySelector('#comment-' + <%= comment.id %>)
+	var li = document.querySelector('#comment-' + '<%= comment.id %>')
 	function changeStyle(val) {
 	  var user = val.querySelector('.user')
 	  var content = val.querySelector('.content')
@@ -26,12 +26,13 @@
 	      user.style.padding = '2px',
 	      content.style.padding = '0px',
 	      val.style.marginLeft = '20px',
+				val.style.borderLeft = '4px solid lightblue',
 	      content.style.fontSize = '8pt',
 	      timeStamp.style.fontSize = '7pt',
 	      timeStamp.style.textAlign = 'right',
 	      image.style.height = '30px',
 	      image.style.width = 'auto',
-	      image2.style.height = '150px'
+	      image2 ? image2.style.height = '150px' : null
 	    }
 	  }
 	    changeStyle(li)
