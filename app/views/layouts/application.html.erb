@@ -16,15 +16,19 @@
 </html>
 <script>
 	function mobileSizing() {
-		var containers = document.querySelector('.container')
+		var containers = document.querySelectorAll('.container')
 		if ($(window).height() > $(window).width()) {
-			return containers.style.margin = '0px', console.log(containers.style.margin)
+			return containers.forEach(function(e) {
+				e.style.margin = '0px'
+			}), console.log(containers[0].style.margin)
 	
 		} else {
-			containers.style.marginLeft = '115px';
-			containers.style.marginRight = '115px';
+			return containers.forEach(function(e) {
+				e.style.marginLeft = 'auto',
+				e.style.marginRight = 'auto'
+			}), console.log(containers[1].style.margin)
 		}
 	}
-	window.addEventListener('resize', mobileSizing)
+	window.addEventListener('deviceorientation', mobileSizing)
 	mobileSizing()
 </script>
