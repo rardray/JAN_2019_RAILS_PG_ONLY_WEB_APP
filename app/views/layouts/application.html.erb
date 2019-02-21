@@ -17,10 +17,14 @@
 <script>
 	function mobileSizing() {
 		var containers = document.querySelectorAll('.container')
+		var columns = document.querySelectorAll('.col-md-8')
 		if ($(window).height() > $(window).width()) {
 			return containers.forEach(function(e) {
 				e.style.margin = '0px'
-			}), console.log(containers[0].style.margin)
+			}),
+				columns.forEach(function(e) {
+					e.style.width = '100%'
+				}),console.log(containers[0].style.margin)
 	
 		} else {
 			return containers.forEach(function(e) {
