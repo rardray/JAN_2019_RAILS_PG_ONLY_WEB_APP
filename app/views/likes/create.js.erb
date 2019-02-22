@@ -1,0 +1,7 @@
+$("#likes_form-<%=@like.micropost_id%>").html("<%= escape_javascript(render( partial: 'microposts/unlike_form', locals: {micropost: Micropost.find(@like.micropost_id) })) %>");
+<% if Micropost.find(@like.micropost_id).likes.count == 1 %>
+	$("#likes-<%=@like.micropost_id%>").html('<%= User.find(@like.user_id).name %> likes this');
+<% end %>
+<% if Micropost.find(@like.micropost_id).likes.count > 1 %>
+	$("#likes-<%=@like.micropost_id%>").html('<%= User.find(@like.user_id).name %> and  <%= pluralize((Micropost.find(@like.micropost_id).likes.count) -1, 'other') %> like this');
+<% end %>

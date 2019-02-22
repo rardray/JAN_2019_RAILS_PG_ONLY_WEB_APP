@@ -6,6 +6,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @comments = @micropost.comments.paginate(page: params[:page])
     @comment = @micropost.comments.build
+    @like = @micropost.likes.build
   end
   def create
     @micropost = current_user.microposts.build(micropost_params)
@@ -23,7 +24,7 @@ class MicropostsController < ApplicationController
     flash[:success] = "Post Successfully Deleted"
     redirect_to root_url
   end
-
+ 
   private
 
   def micropost_params

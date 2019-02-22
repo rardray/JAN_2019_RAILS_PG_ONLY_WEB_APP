@@ -18,7 +18,22 @@
 		Posted <%= time_ago_in_words(micropost.created_at) %> ago.
 	</span>
 	<span><%= pluralize(micropost.comments.count, 'comment')%> | </span>
+	<span id='likes-<%=micropost.id%>'>
+		<% if micropost.likes.count == 0 %>
+			<%= 'be the first person to like this.'%>
+		<% end %>
+		<% if micropost.likes.count >= 1 %>
+			<%= pluralize(micropost.likes.count, ' like')%>
+		<% end %>
+	</span>
 	<br/>
+	<span id='likes_form-<%=micropost.id%>' style='display: inline-block; text-align: right; float: right; bottom: 0px'>
+		<% if micropost.likes.find_by(user_id: current_user.id).nil? %>
+			<%= render :partial => 'microposts/like_form', :locals => {micropost_id: micropost.id} %>
+		<% else %>
+			<%= render partial: 'microposts/unlike_form', locals: {micropost: micropost} %>
+		<% end %>
+	</span>
 	<p style='padding: 4px; text-align: right; display: block; margin: 0px;'>
 		<% if current_page?(root_url)|| current_page?(user_path) %>
 			<%= link_to 'comment', micropost  %>
@@ -32,5 +47,6 @@
 		<% if micropost.comments.any? && !current_page?(micropost_path(micropost.id)) %>
 			<%= render micropost.comments.first, @comments %>
 		<% end %>
+		<span> |  </span>
 	</p>
 </li>

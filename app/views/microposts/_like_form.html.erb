@@ -1,0 +1,5 @@
+<%= form_for(@like, remote: true) do |f|%>
+	<%= f.hidden_field :micropost_id, value: micropost_id %>
+	<%= f.hidden_field :user_id, :value =>  current_user.id%>
+	<%= f.submit 'Like', class: 'like-buttons'%>
+<% end %>

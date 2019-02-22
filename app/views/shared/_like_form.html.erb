@@ -1,0 +1,14 @@
+	<span>
+	<% if micropost.likes.find_by(user_id: current_user.id).nil? %>
+		<%= form_for(@like) do |f|%>
+			<%= f.hidden_field :micropost_id, :value => micropost.id %>
+			<%= f.hidden_field :user_id, :value =>  current_user.id%>
+			<%= f.submit 'Like'%>
+		<% end %>
+	<% else %>
+		<%= form_for(micropost.likes.find_by(user_id: current_user.id), html: {method: :delete }, remote: true ) do |f|  %>
+			<%= f.hidden_field :micropost_id, :value => micropost.id%>
+			<%= f.submit "Unlike"%>
+		<% end %>
+	<% end %>
+</span>

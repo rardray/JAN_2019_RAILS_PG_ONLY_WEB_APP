@@ -1,0 +1,2 @@
+$("#likes_form-<%=@like.micropost_id%>").html("<%= escape_javascript(render( partial: 'microposts/like_form',  locals: {micropost_id: @likes.micropost_id})) %>");
+$("#likes-<%=@like.micropost_id%>").html('<%= Micropost.find(@like.micropost_id).likes.count %>');
