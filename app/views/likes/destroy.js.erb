@@ -1,2 +1,10 @@
 $("#likes_form-<%=@like.micropost_id%>").html("<%= escape_javascript(render( partial: 'microposts/like_form',  locals: {micropost_id: @likes.micropost_id})) %>");
-$("#likes-<%=@like.micropost_id%>").html('<%= Micropost.find(@like.micropost_id).likes.count %>');
+<% if Micropost.find(@like.micropost_id).likes.count == 1 %>
+	$("#likes-<%=@like.micropost_id%>").html('<%= User.find(@like.user_id).name %> likes this');
+<% end %>
+<% if Micropost.find(@like.micropost_id).likes.count > 1 %>
+	$("#likes-<%=@like.micropost_id%>").html('<%= Micropost.find(@like.micropost_id).likes.sample.user.name %> and  <%= pluralize((Micropost.find(@like.micropost_id).likes.count) -1, 'other') %> like this');
+<% end %>
+<% if Micropost.find(@like.micropost_id).likes.count == 0  %>
+	$("#likes-<%=@like.micropost_id%>").html('Be the first person to like this');
+<% end %>

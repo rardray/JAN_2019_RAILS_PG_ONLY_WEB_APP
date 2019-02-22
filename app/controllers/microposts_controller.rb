@@ -24,7 +24,13 @@ class MicropostsController < ApplicationController
     flash[:success] = "Post Successfully Deleted"
     redirect_to root_url
   end
- 
+  def likes
+    @micropost = Micropost.find(params[:id])
+    @likes = @micropost.likes.all
+    @users = @likes.select{ |u| u.user_id}.map{|u| User.find(u.user_id)}.take(50)
+    @title = 'Like'
+    render 'show_likes'
+  end
   private
 
   def micropost_params

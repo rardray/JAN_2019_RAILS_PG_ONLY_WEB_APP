@@ -22,8 +22,11 @@
 		<% if micropost.likes.count == 0 %>
 			<%= 'be the first person to like this.'%>
 		<% end %>
-		<% if micropost.likes.count >= 1 %>
-			<%= pluralize(micropost.likes.count, ' like')%>
+		<% if micropost.likes.count == 1 %>
+			<%= link_to (micropost.likes.first.user.name + ' likes this'), likes_micropost_path(id: micropost.id) %>
+		<% end %>
+		<% if micropost.likes.count > 1 %>
+			<%= link_to (micropost.likes.sample.user.name + ' and ' + pluralize((micropost.likes.count) -1, 'other') + ' like this'), likes_micropost_path(id: micropost.id)%>
 		<% end %>
 	</span>
 	<br/>
@@ -44,9 +47,9 @@
 			<span> | </span>
 			<%= link_to 'delete', micropost, method: :delete, data: { confirm: "Are you sure?" } %>
 		<% end %>
+		<span> |  </span>
 		<% if micropost.comments.any? && !current_page?(micropost_path(micropost.id)) %>
 			<%= render micropost.comments.first, @comments %>
 		<% end %>
-		<span> |  </span>
 	</p>
 </li>
