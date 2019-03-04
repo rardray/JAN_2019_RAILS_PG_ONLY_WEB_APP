@@ -12,7 +12,7 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', ">= 3.4.1"
 gem 'faker', '>= 1.7.3'
 gem 'will_paginate', '>= 3.1.6'
 gem 'bootstrap-will_paginate', '>= 1.0.0'
