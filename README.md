@@ -1,5 +1,16 @@
 # README
 
+# Additional features added beyond tutorial
+
+Added Like/Unlike functionality to posts.
+
+Added commenting functionality to posts.
+
+Added ability to add photos to comments.
+
+Looking to add search functionality.
+
+
 # Ruby on Rails Tutorial sample application
 
 This is the sample application for
